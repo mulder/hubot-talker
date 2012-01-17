@@ -11,6 +11,10 @@ class Talker extends Adapter
     strings.forEach (str) =>
       @bot.write user.room, {"type": "message", "content": str}
 
+  private_send: (user, strings...) ->
+    strings.forEach (str) =>
+      @bot.write user.room, {"type": "message", "content": str, "to": user.id}
+
   reply: (user, strings...) ->
     strings.forEach (str) =>
       @send user, "@#{user.name} #{str}"
